@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="id.akakom.bimo.shareloc">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+            android:name="lib.gmsframeworkx.SuperUser.RequestHandler"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:networkSecurityConfig="@xml/network_security_config"
+            android:roundIcon="@mipmap/ic_launcher"
+            android:supportsRtl="true"
+            android:theme="@style/ToolBarThemeMain">
+        <activity android:name=".app.riwayat.RiwayatActivity"></activity>
+        <activity android:name=".app.detailriwayat.DetailRiwayatActivity" />
+        <activity android:name=".app.main.MainActivity" />
+        <activity android:name=".app.splashscreen.SplashScreenActivity" />
+        <activity android:name=".app.register.RegisterActivity" />
+        <activity
+                android:name=".app.login.LoginActivity"
+                android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id" />
+
+        <activity
+                android:name="com.facebook.FacebookActivity"
+                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                android:label="@string/app_name" />
+        <activity
+                android:name="com.facebook.CustomTabActivity"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".dialogs.DialogAddPejabat.DialogAddPejabat" />
+        <activity android:name=".dialogs.DialogVerifikasiPermohonan.DialogVerifikasiPermohonan" />
+        <activity android:name=".app.verifikatorapp.daftarpembayaran.DaftarPembayaranFragment" />
+        <activity android:name=".app.verifikatorapp.indekskepuasanmasyarakat.adapter.AdapterIkm" />
+        <activity android:name=".app.verifikatorapp.detailpembayaran.DetailPembayaranToVerifActivity" />
+        <activity android:name=".app.verifikatorapp.daftarpejabat.DaftarPejabatActivity" />
+        <activity android:name=".dialogs.DialogRequestIkm.DialogRequestIkm" />
+        <activity android:name=".app.verifikatorapp.indekskepuasanmasyarakat.IKMActivity" />
+        <activity android:name=".app.verifikatorapp.detailpengesah.DetailPengesahDialog" />
+        <activity android:name=".app.verifikatorapp.detailpermohonan.DetailPermohonanActivity" />
+        <activity android:name=".dialogs.DialogUploadBuktiBayar.DialogUploadBuktiBayar" />
+        <activity android:name=".app.tentangaplikasi.TentangAplikasiActivity" />
+        <activity android:name=".app.verifikatorapp.daftarpengesah.adapter.DaftarPengesahAdapter" />
+        <activity android:name=".app.verifikatorapp.daftarpengesah.DaftarPengesahActivity" />
+        <activity android:name=".app.notifikasi.adapter.NotifikasiAdapter" />
+        <activity android:name=".app.verifikatorapp.historipermohonan.HistoriPermohonanActivity" />
+        <activity android:name=".app.profileuser.ProfileUserActivity" />
+        <activity android:name=".app.verifikatorapp.layananlegalisasi.LayananLegalisasiFragment" />
+        <activity android:name=".app.verifikatorapp.layananlegalisasi.LayananLegalisasiActivity" />
+        <activity android:name=".app.verifikatorapp.daftarrequest.DaftarRequestActivity" />
+        <activity android:name=".app.PhotoPreview.PhotoPreviewActivity" />
+        <activity android:name=".app.verifikatorapp.detaildokumen.DetailDokumenToVerifActivity" />
+        <activity android:name=".app.detailpermohonan.permohonanselesai.adapter.KualitasLayananAdapter" />
+        <activity android:name=".app.detailpermohonan.permohonanselesai.KwitansiActivity" />
+        <activity android:name=".app.detailpermohonan.permohonanselesai.KualitasLayananActivity" />
+        <activity android:name=".app.detailpermohonan.permohonanberstatus.PermohonanBerstatusActivity" />
+        <activity android:name=".app.detailpermohonan.pembayaranpermohonan.PembayaranPermohonanActivity" />
+        <activity android:name=".app.notifikasi.NotifikasiActivity" />
+        <activity android:name=".app.buatpermohonan.BuatPermohonanActivity" />
+        <activity android:name=".app.detaillayanan.DetailLayananActivity" />
+
+        <service android:name=".module.Firebase.FirebaseMService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+<service android:name=".module.Firebase.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+        <activity
+                android:name=".app.home.HomeActivity"
+                android:label="@string/title_activity_home"
+                android:theme="@style/ToolBarThemeMain.NoActionBar" />
+
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false" />
+
+        <activity android:name=".app.antriansaya.AntrianActivity" />
+        <activity android:name=".app.verifikasiakun.VerifikasiAkunActivity" />
+        <activity android:name=".app.verifikatorapp.main.VerifikatorActivity" />
+        <activity
+                android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+                android:theme="@style/Base.Theme.AppCompat" />
+    </application>
+
+</manifest>

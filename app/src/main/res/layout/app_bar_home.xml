@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="id.akakom.bimo.shareloc.app.home.HomeActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:elevation="0dp"
+            android:stateListAnimator="@null"
+            style="@style/AppTheme.AppBarCustom">
+        <!--android:theme="@style/ToolBarThemeMain.AppBarOverlay"-->
+
+        <id.akakom.bimo.shareloc.utils.BaseToolbar
+                android:id="@+id/toolbar"
+                app:titleTextColor="@color/grey_700"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white">
+            <TextView
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:id="@+id/title"
+                    style="@style/Text.Title.Banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/dimen_48dp"
+                    android:text="Legalisasi"
+                    android:textColor="@color/grey_800"/>
+        </id.akakom.bimo.shareloc.utils.BaseToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <include layout="@layout/content_home" android:id="@+id/include"/>
+    <RelativeLayout android:layout_width="wrap_content"
+                    android:id="@+id/lay_fab"
+                    app:layout_anchor="@+id/include"
+                    app:layout_anchorGravity="end|bottom"
+                    android:layout_height="wrap_content">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="140dp"
+                android:layout_margin="@dimen/dimen_16dp"
+                app:backgroundTint="@color/colorPrimary"
+                android:id="@+id/fab_add"
+                android:tint="@color/colorAccent"
+                android:src="@drawable/ic_add_black_24dp"
+                />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

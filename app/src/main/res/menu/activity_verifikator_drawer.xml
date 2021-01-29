@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_beranda"
+
+                android:title="@string/menu_beranda"/>
+        <item
+                android:id="@+id/nav_indexkepuasan"
+
+                android:title="Index Kepuasan"/>
+        <item
+                android:id="@+id/nav_pengesah"
+
+                android:title="Pengesah"/>
+        <item
+                android:id="@+id/nav_pejabat"
+
+                android:title="Pejabat"/>
+        <item
+                android:id="@+id/nav_tentang"
+
+                android:title="@string/menu_tentang"/>
+        <item
+                android:id="@+id/nav_logout"
+
+                android:title="@string/menu_logout"/>
+    </group>
+</menu>
