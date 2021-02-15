@@ -16,6 +16,10 @@ android {
         abortOnError false
     }
 
+    configurations {
+        all*.exclude group: 'com.android.volley'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -24,8 +28,8 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.1"
 
-    def package_name = "id.go.kemlu.legalisasidokumen"
-    def app_alias_name = "Legalisasi Dokumen"
+    def package_name = "id.akakom.bimo.shareloc"
+    def app_alias_name = "Shareloc"
     def versionPropsFile = file('version.properties')
 
     flavorDimensions "default"
@@ -72,50 +76,24 @@ android {
             def addUrl = { constantName, constantValue ->
                 buildConfigField "String", "${constantName}", "\"${constantValue}\""
             }
-            addUrl("base_url", "https://apikonsuler.kemlu.go.id")
+            addUrl("base_url", "http://tutorial-sourcecode.com/shareloc")
             addUrl("api", "/")
-            addUrl("login", "api/user_login")
-            addUrl("loginGoogle", "api/auth_google")
-            addUrl("loginFacebook", "api/auth_facebook")
-            addUrl("authEmail", "api/auth_email")
-            addUrl("register", "api/user_registration")
-            addUrl("lupaPassword", "api/forgot_password")
-            addUrl("reffCountry", "api/reff_country")
-            addUrl("reffInstitution", "api/reff_institution")
-            addUrl("reffPejabat", "apix/list_pejabat")
-            addUrl("reffPengesah", "apix/list_pengesah")
-            addUrl("reffDocType", "api/reff_document_type")
-            addUrl("reffOfficialType", "api/reff_official_type")
-            addUrl("reffOfficialInstitution", "api/reff_official_institution")
-            addUrl("submitLegalisasi", "apix/submit_legalisasi")
-            addUrl("getProfile", "apix/get_profile")
-            addUrl("getLegalisasi", "apix/get_legalisasi")
-            addUrl("getNotification", "apix/get_notification")
-            addUrl("daftarRequest", "apix/get_online_request")
-            addUrl("daftarRequestToVerif", "verificator/get_request_to_verif")
-            addUrl("daftarPengesah", "apix/list_pengesah")
-            addUrl("detailOnlineRequest", "apix/get_detail_online_request")
-            addUrl("detailOnlineRequestByGroup", "apix/get_detail_online_request_by_group")
-            addUrl("updateRequestStatus", "verificator/update_request_status")
-            addUrl("uploadPaymentTransfer", "apix/upload_payment_transfer")
-            addUrl("updateRequestStatus", "verificator/update_request_status")
-            addUrl("updateDocumentStatus", "verificator/update_document_status")
-            addUrl("detailRequestToVerif", "verificator/get_detail_request_to_verif")
-            addUrl("submitikm", "apix/submit_ikm")
-            addUrl("getikm", "verificator/get_ikm")
-            addUrl("getikmComment", "verificator/get_ikm_comment")
-            addUrl("daftarPejabat", "apix/list_pejabat")
-            addUrl("getPaymentRequest", "verificator/get_payment_online_request")
-            addUrl("updatePaymentRequest", "verificator/update_payment_online_request")
-            addUrl("listInstitusi", "verificator/list_official_institution")
-            addUrl("listPosition", "verificator/list_official_position")
-            addUrl("addPejabat", "verificator/add_official_user")
-            addUrl("updateDeviceToken", "apix/update_device_token")
+            addUrl("login", "api/login")
+            addUrl("register", "api/register")
+            addUrl("allRiwayat", "api/shareloc")
+            addUrl("allRiwayatMember", "api/shareloc/riwayatmember")
+            addUrl("detailShareloc", "api/shareloc/getdetail")
+            addUrl("locationsShareloc", "api/shareloc/getlocations")
+            addUrl("memberShareloc", "api/shareloc/getmembers")
+            addUrl("share", "api/shareloc/share")
+            addUrl("addPartisipan", "api/shareloc/addpartisipan")
+            addUrl("stopShare", "api/shareloc/stopshare")
+            addUrl("addLocation", "api/shareloc/addlocation")
         }
 
         signingConfigs {
             release {
-                storeFile file('/Users/al/AndroidStudioProjects/legalisasi-dokumen-kemlu/key_legalisasi.jks')
+                storeFile file('/Users/al/AndroidStudioProjects/Shareloc/key_legalisasi.jks')
                 storePassword 'dev@legalisasi'
                 keyAlias 'KeyLegalisasi'
                 keyPassword 'dev@legalisasi'
@@ -127,15 +105,16 @@ android {
 
         productFlavors {
             development {
-                applicationId package_name + ".dev"
+                applicationId package_name
                 versionName "${version_major}.${version_minor}.${version_maintenance}.${version_build}"
                 def makeAConstant = { constantName, constantValue ->
                     manifestPlaceholders += [(constantName): constantValue]
                     buildConfigField "String", "${constantName}", "\"${constantValue}\""
                 }
-                makeAConstant("base_api", "https://apikonsuler.kemlu.go.id")
-                resValue "string", "app_name", "Dev " + app_alias_name
-                makeAConstant("application_name", "Dev " + app_alias_name)
+                makeAConstant("base_api", "http://tutorial-sourcecode.com/shareloc")
+//                resValue "string", "app_name", "Dev " + app_alias_name
+                resValue "string", "app_name", "" + app_alias_name
+                makeAConstant("application_name", "" + app_alias_name)
                 /*resValue "string", "google_maps_key",
                         (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")*/
                 manifestPlaceholders = [
@@ -151,7 +130,7 @@ android {
                     manifestPlaceholders += [(constantName): constantValue]
                     buildConfigField "String", "${constantName}", "\"${constantValue}\""
                 }
-                makeAConstant("base_api", "https://apikonsuler.kemlu.go.id")
+                makeAConstant("base_api", "http://tutorial-sourcecode.com/shareloc")
                 makeAConstant("application_name", app_alias_name)
                 resValue "string", "app_name", app_alias_name
                 /*resValue "string", "google_maps_key",
@@ -211,4 +190,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'com.android.support:multidex:1.0.3'
+
+    //google
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation "com.google.android.libraries.places:places-compat:2.1.0"
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
 }

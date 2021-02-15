@@ -15,6 +15,7 @@
     <string name="menu_beranda">Beranda</string>
     <string name="menu_tentang">Tentang</string>
     <string name="menu_logout">Logout</string>
+    <string name="firebase_key">AAAA57kTqpA:APA91bErhDHGVQkCVLeRry6ApdltC7KweANRKejoUlJGQbW_JjrfW9PYjaYljfJ-wsqnl8QiuiyLg2zE5eaNHS__tbE34aBLaK3HtV9-UbIQlPMzesHepPHZXnxilwM6pyQALUtp6g8l</string>
 
     <string name="facebook_app_id">524670385054001</string>
     <string name="fb_login_protocol_scheme">fb1753977971348255</string>

@@ -25,7 +25,7 @@
                                         android:layout_height="wrap_content">
                                         <com.google.android.material.textfield.TextInputEditText
                                                 android:inputType="text"
-                                                android:id="@+id/edt_email"
+                                                android:id="@+id/edt_username"
                                                 android:layout_width="match_parent"
                                                 style="@style/EditText.Form"
                                                 android:hint="Username"
@@ -64,9 +64,22 @@
                                         android:layout_height="wrap_content">
                                         <com.google.android.material.textfield.TextInputEditText
                                                 android:inputType="text"
-                                                android:id="@+id/edt_jk"
+                                                android:id="@+id/edt_alamat"
                                                 android:layout_width="match_parent"
                                                 style="@style/EditText.Form"
+                                                android:hint="Alamat"
+                                                android:layout_height="wrap_content"/>
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_marginTop="@dimen/dimen_8dp"
+                                        android:layout_width="match_parent"
+                                        style="@style/EditText.Form"
+                                        android:layout_height="wrap_content">
+                                        <com.google.android.material.textfield.TextInputEditText
+                                                android:inputType="text"
+                                                android:id="@+id/edt_jk"
+                                                android:layout_width="match_parent"
+                                                style="@style/EditText.Chooser"
                                                 android:hint="Jenis Kelamin"
                                                 android:layout_height="wrap_content"/>
                                 </com.google.android.material.textfield.TextInputLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        style="@style/clickable"
+        android:paddingLeft="@dimen/dimen_16dp"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/dimen_16dp"
+        android:layout_height="wrap_content"
+        tools:context=".app.riwayat.adapter.RiwayatAdapter">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingTop="@dimen/dimen_12dp"
+            android:paddingBottom="@dimen/dimen_12dp"
+            android:layout_height="wrap_content">
+            <id.akakom.bimo.shareloc.utils.avatarview.views.AvatarView
+                android:id="@+id/avatar"
+                android:layout_width="40dp"
+                    android:layout_marginRight="@dimen/dimen_8dp"
+                android:layout_height="40dp"/>
+            <LinearLayout
+
+                    android:layout_toRightOf="@id/avatar"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_name"
+                            style="@style/Text.Standard.OneRow.Bold"
+                            android:text="Bima Sakti"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    <LinearLayout
+                            android:layout_marginTop="@dimen/dimen_4dp"
+                            android:layout_width="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:layout_width="@dimen/dimen_16dp"
+                                android:src="@drawable/ic_baseline_access_time_24"
+                                android:layout_height="@dimen/dimen_16dp"/>
+                        <TextView
+                                android:layout_marginLeft="@dimen/dimen_4dp"
+                                android:id="@+id/tv_time"
+                                android:text="75 km"
+                                style="@style/Text.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+            </LinearLayout>
+    </RelativeLayout>
+    <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/grey_500"/>
+</LinearLayout>

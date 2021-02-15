@@ -21,7 +21,7 @@
                 android:layout_marginRight="@dimen/dimen_18dp"
                 android:gravity="center"
                 android:paddingRight="@dimen/dimen_48dp"
-                android:text="Harga Daerah"
+                android:text="Shareloc"
                 android:textColor="@color/grey_800"/>
     </id.akakom.bimo.shareloc.utils.BaseToolbar>
 

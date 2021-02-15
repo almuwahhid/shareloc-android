@@ -50,7 +50,7 @@
                             android:layout_height="wrap_content">
                         <com.google.android.material.textfield.TextInputEditText
                                 android:inputType="text"
-                                android:id="@+id/edt_email"
+                                android:id="@+id/edt_username"
                                 android:layout_width="match_parent"
                                 style="@style/EditText.Form"
                                 android:hint="Username"

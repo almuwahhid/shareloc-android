@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:background="@color/white"
         android:layout_height="match_parent"
         tools:context=".app.main.home.HomeFragment">
+        <include layout="@layout/toolbar_home"/>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <fragment
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:id="@+id/map" />
+                <androidx.cardview.widget.CardView
+                        android:visibility="gone"
+                        android:id="@+id/btn_stop"
+                        style="@style/clickable"
+                        app:cardElevation="@dimen/dimen_2dp"
+                        app:cardCornerRadius="0dp"
+                        app:contentPadding="@dimen/dimen_8dp"
+                        app:cardBackgroundColor="@color/red_400"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                        android:layout_alignParentRight="true"
+                                        android:src="@drawable/ic_mdi_check_circle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                <TextView
+                                        android:id="@+id/tv_stop"
+                                        android:layout_width="wrap_content"
+                                        style="@style/Text.Standard"
+                                        android:textColor="@color/white"
+                                        android:text="Hentikan membagi lokasi"
+                                        android:layout_height="wrap_content"/>
+                        </RelativeLayout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+                </androidx.cardview.widget.CardView>
+                <RelativeLayout
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <Button
+                                android:id="@+id/btn_share"
+                                android:text="Bagikan Lokasi"
+                                android:layout_marginLeft="@dimen/dimen_16dp"
+                                android:padding="@dimen/dimen_8dp"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/white"
+                                android:background="@drawable/button_active"
+                                android:layout_toLeftOf="@+id/btn_myloc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
 
-</FrameLayout>
+                        <!--<androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_16dp"
+                                app:cardBackgroundColor="@color/colorPrimary"
+                                app:contentPadding="@dimen/dimen_8dp"
+                                app:cardCornerRadius="@dimen/dimen_8dp"
+                                android:layout_toLeftOf="@+id/fab"
+                                android:layout_marginBottom="@dimen/dimen_16dp"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:src="@drawable/ic_menu_share"
+                                                android:layout_height="wrap_content"/>
+                                        <TextView
+                                                android:layout_marginLeft="@dimen/dimen_8dp"
+                                                android:text="Bagikan Lokasi"
+                                                android:textColor="@color/white"
+                                                android:layout_width="wrap_content"
+                                                style="@style/Text.HeaderTitle.Bold"
+                                                android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                        </androidx.cardview.widget.CardView>-->
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/btn_myloc"
+                                android:layout_margin="@dimen/dimen_16dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_width="wrap_content"
+                                android:tint="@color/white"
+                                android:backgroundTint="@color/colorPrimary"
+                                android:src="@drawable/ic_baseline_gps_fixed_24"
+                                android:layout_height="wrap_content"/>
+                </RelativeLayout>
+        </RelativeLayout>
+</LinearLayout>

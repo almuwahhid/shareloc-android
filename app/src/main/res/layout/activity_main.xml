@@ -3,9 +3,17 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent"
         tools:context=".app.main.MainActivity">
+    <FrameLayout
+            android:id="@+id/page_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/lay_botom">
+    </FrameLayout>
     <LinearLayout
+            android:id="@+id/lay_botom"
             android:orientation="vertical"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
@@ -13,12 +21,12 @@
         <View
              android:layout_alignParentBottom="true"
              android:layout_width="match_parent"
-             android:layout_height="1dp"
+             android:layout_height="0.5dp"
              android:background="@color/grey_500"/>
         <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/button_nav_pemilik"
+                android:id="@+id/button_nav"
                 android:layout_width="match_parent"
-                app:itemBackground="@color/grey_500"
+                app:itemBackground="@color/white"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 app:menu="@menu/home" />
