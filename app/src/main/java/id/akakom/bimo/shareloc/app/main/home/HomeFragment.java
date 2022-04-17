@@ -84,7 +84,7 @@ public class HomeFragment extends FragmentPermission implements OnMapReadyCallba
 
     HomeViewModel viewModel;
 
-    private static final long UPDATE_INTERVAL = 2000, FASTEST_INTERVAL = 2000; // = 5 seconds
+    private static final long UPDATE_INTERVAL = 5000, FASTEST_INTERVAL = 5000; // = 5 seconds
 
     LatLng position, myltlng;
 
@@ -165,7 +165,7 @@ public class HomeFragment extends FragmentPermission implements OnMapReadyCallba
         btn_myloc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onFocusMap(myltlng.latitude, myltlng.longitude, 12);
+                onFocusMap(myltlng.latitude, myltlng.longitude, 15);
             }
         });
 
@@ -200,7 +200,7 @@ public class HomeFragment extends FragmentPermission implements OnMapReadyCallba
                     mCurrLocationMarker.remove();
                 }
                 if(App.getInstance().getLocation() != null){
-                    onFocusMap(myltlng.latitude, myltlng.longitude, 12);
+                    onFocusMap(myltlng.latitude, myltlng.longitude, 15);
                     mCurrLocationMarker = googleMap.addMarker(new MarkerOptions().title("Lokasi Anda").position(myltlng).icon(bitmapDescriptorFromVector(getContext(), R.drawable.marker_user)));
                     viewModel.broadcastShareloc(App.getInstance().getLocation().getId_shareloc(), location.getLatitude(), location.getLongitude());
                 }
@@ -282,7 +282,8 @@ public class HomeFragment extends FragmentPermission implements OnMapReadyCallba
                     if(position != null){
                         String uri = String.format(Locale.ENGLISH, "geo:%f,%f", position.latitude, position.longitude);
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                        startActivity(intent);
+//                        startActivity(intent);
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?f=d&hl=en&saddr=" + myltlng.latitude + "," + myltlng.longitude + "&daddr=" + position.latitude + "," + position.longitude)));
                     } else {
                         GmsStatic.ToastShort(getContext(), "Lokasi belum terdeteksi");
                     }
@@ -325,14 +326,12 @@ public class HomeFragment extends FragmentPermission implements OnMapReadyCallba
         if(mCurrLocationMarker != null){
             mCurrLocationMarker.remove();
         }
-        onFocusMap(lat, lng, 12);
+        onFocusMap(lat, lng, 15);
         mCurrLocationMarker = googleMap.addMarker(new MarkerOptions().title("Lokasi Anda").position(new LatLng(lat, lng)).icon(bitmapDescriptorFromVector(getContext(), R.drawable.marker_user)));
     }
 
     public void startLookingAt(int id){
-        GmsStatic.setSPString(getContext(), SHARED_STATUS, SHARED_LOOKINGAT);
         viewModel.getLookedLocation(id);
-        viewModel.joinShareLocation(id);
     }
 
     private void startGps(){
@@ -362,6 +361,18 @@ public class HomeFragment extends FragmentPermission implements OnMapReadyCallba
     }
 
     private void observeViewModel(){
+        viewModel.isLookingAt.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer o) {
+                if(o == 0){
+
+                } else {
+                    GmsStatic.setSPString(getContext(), SHARED_STATUS, SHARED_LOOKINGAT);
+                    viewModel.joinShareLocation(o);
+                }
+            }
+        });
+
         viewModel.isShareLoc.observe(this, new Observer<Shareloc>() {
             @Override
             public void onChanged(Shareloc o) {

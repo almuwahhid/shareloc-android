@@ -30,6 +30,7 @@ public class HomeViewModel extends BaseViewModel {
 
     MutableLiveData isShareStarted = new MutableLiveData<Boolean>();
     MutableLiveData isShareLoc = new MutableLiveData<Shareloc>();
+    MutableLiveData isLookingAt = new MutableLiveData<Integer>();
 
     public HomeViewModel(@NotNull Context context) {
         super(context);
@@ -293,7 +294,7 @@ public class HomeViewModel extends BaseViewModel {
             @Override
             public Map<String, String> requestParam() {
                 HashMap param = new HashMap<String, String>();
-                param.put("data", getGson().toJson(sharelocMember));
+                param.put("id_shareloc", ""+id_shareloc);
                 return param;
             }
 
@@ -319,9 +320,11 @@ public class HomeViewModel extends BaseViewModel {
                     if (response.getInt("status") == 200) {
                         Shareloc shareloc = getGson().fromJson(response.getString("data"), Shareloc.class);
                         if(shareloc.getStatus() == 0){
+                            isLookingAt.postValue(0);
                             isMessage.postValue("Link berbagi lokasi telah usang");
                         } else {
-                            isShareLoc.postValue(shareloc);
+                            isLookingAt.postValue(id);
+//                            isShareLoc.postValue(shareloc);
                             isMessage.postValue("Mulai memantau lokasi");
                         }
                     } else {
